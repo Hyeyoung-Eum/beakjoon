@@ -15,7 +15,6 @@ for x in range(10001):
         if result in none_selfnumber:
             break
         none_selfnumber.add(result)
-        print("계산중")
 
 for elem in range(1, 10001):
     if elem not in none_selfnumber:
