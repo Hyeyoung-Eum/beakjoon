@@ -8,33 +8,34 @@ order_list=list(map(int, input().split()))
 
 #처음 3개는 그냥 받을 수 있음 -> 집합 형태 같음. 같은 원소는 상관없이 받음.
 #3개를 넘어갈 때는, 새로운 수를 받을 때는 플러그 빼는 수 연산이 실행됨
-
 multitap_set=set()
 rst=0
 
-def duplication():
-    count_list=[]
-    multitap_list=list(multitap_set)
-    for j in multitap_list:
-        count_list.append(multitap_list.count(j))
+for _ in range(N):
+    multitap_set.add(order_list[0])
+    del order_list[0]
+    # print(order_list)
+    # print(multitap_set)
 
-    multitap_list.remove(multitap_list[count_list.index(max(count_list))])
-    rst+=1
+for _ in range(K-N-1):
+    if order_list[0] in multitap_set:
+        multitap_set.add(order_list[0])
+        order_list.remove(order_list[0])
+        # print(order_list)
+        # print(multitap_set)
+    elif order_list[0] not in multitap_set: #멀티탭에 꽂혀있지 않으면
+        count_list=[]
+        multitap_list=list(multitap_set)
+        for j in multitap_list:
+            count_list.append(multitap_list.count(j))
 
-for i in order_list:
-    multitap_set.add(i)
-    order_list.remove(i)
-    if (len(multitap_set)==N):
-        break
-
-for i in order_list:
-    if i in multitap_set:
-        multitap_set.add(i)
-        order_list.remove(i)
-    else: #멀티탭에 꽂혀있지 않으면
-        duplication()
-        multitap_set.add(i)
-        order_list.remove(i)
+        multitap_list.remove(multitap_list[count_list.index(max(count_list))])
+        multitap_set=set(multitap_list)
+        rst+=1
+        multitap_set.add(order_list[0])
+        order_list.remove(order_list[0])
+        # print(order_list)
+        # print(multitap_set)
 
     #(만약 집합의 수가 3개가 되었으면 4번째 부터는
         #안에 있는 것과 같으면 그냥 넣기
