@@ -7,7 +7,6 @@ while(True):
     else :
         max_num=max(num_list)
         num_list.remove(max(num_list))
-
         if max_num**2 == num_list[0]**2+num_list[1]**2:
             print('right')
         else:
@@ -19,4 +18,4 @@ while(True):
 
 # b=['1', '2']
 
-# print(b-a)
+# print(b-a)ㅌ
