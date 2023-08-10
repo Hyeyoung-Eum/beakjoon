@@ -1,9 +1,9 @@
 //내장 객체(Standard bulit-in objects)
 //:가장 대표적인 예가 Date 객체
+//실제 활용 연습하기
 
 //Date 객체
 let myDate = new Date();
-
 ///()안에 숫자를 넣으면,
 ///1970년 1월 1일 00:00:00 UTC + (숫자)밀리초만큼 더해져서 나온다.
 //1000밀리초 = 1초
@@ -19,8 +19,9 @@ console.log(myDate1);
 console.log(myDate2);
 console.log(myDate3);
 
-
+//둘은 같은 결과다. now()잘 사용하기
 console.log(myDate.getTime());
+console.log(Date.now());
 //myDate객체가, 1970년 1월 1일 00:00:00 UTC부터 몇 밀리 초 지났는지?
 let timeDiff = myDate.getTime() - today.getTime();
 //해당 시간이 지금으로부터 얼마만큼의 차이를 가지고 있는지 계산 가능.
