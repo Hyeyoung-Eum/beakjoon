@@ -58,7 +58,12 @@
 # for i in range(m):
 #     print(up_binary(targets[i])-down_binary(targets[i]), end=' ')
 
-###dict()이용 풀이
+
+
+
+
+
+###3) dict()이용 풀이
 #card 숫자들을 dict의 key, 카드 숫자의 갯수를 value로 하여 사전을 만들고
 #target 숫자들을 key로 하여 value 출력
 
@@ -93,7 +98,7 @@
 
 
 
-###3) collections의 Counter모듈 사용###
+###4) collections의 Counter모듈 사용###
 from collections import Counter
 import sys
 input=sys.stdin.readline
