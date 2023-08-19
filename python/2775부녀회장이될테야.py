@@ -1,21 +1,37 @@
-import sys
+#1)방법
 
+import sys
 input=sys.stdin.readline
 
-T=int(input())
+t=int(input())
+
+for _ in range(t):
+    floor = int(input()) #층수
+    num = int(input()) #호수
+    f0 = [x for x in range(1, num+1)] #0층 리스트
+    for k in range(floor): #층 수 만큼 반복
+        for i in range(1, num): #1~n-1까지(인덱스로 사용)
+            f0[i] += f0[i-1] #층별 각 호실의 사람 수를 변경
+    print(f0[-1])
 
 
-for _ in range(T):
-    k=int(input()) #k층. 단계. sigma 횟수. 0층이 요소. 1층=1번 시그마, 2층=2번 시그마
-    n=int(input()) #n호. 해당 시그마에서 n번까지 더해야함.
+# import sys
 
-    people = [i for i in range(1, n+1)] #0층 사람들 넣기
+# input=sys.stdin.readline
 
-    for x in range(k):
-        new = []
-        for y in range(n):
-            new.append(sum(people[:y+1]))
-        people= new.copy()
+# T=int(input())
+
+# for _ in range(T):
+#     k=int(input()) #k층. 단계. sigma 횟수. 0층이 요소. 1층=1번 시그마, 2층=2번 시그마
+#     n=int(input()) #n호. 해당 시그마에서 n번까지 더해야함.
+
+#     people = [i for i in range(1, n+1)] #0층 사람들 넣기
+
+#     for x in range(k):
+#         new = []
+#         for y in range(n):
+#             new.append(sum(people[:y+1]))
+#         people= new.copy()
     # 3층의 1호는 1명 2호는 1+ 1+ (1+2) 3호는 1+ 1 + (1+2) + 1 + (1+2+3) 
     # 2층의 1호는 1명 2호는 1+ (1+2) 3호는 1+ (1+2) + (1+2+3)  (i까지의 합을 k숫자를 넣어 반복문)
     # 1층의 1호는 1명, 2호는 1+2명, 3호는 1+2+3명 (i까지의 합 i(i+1)/2)
