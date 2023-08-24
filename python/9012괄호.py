@@ -35,10 +35,13 @@
 #         print('NO')
 
 
+
+#stack에 (는 append, )는 pop
 ###더 쉬운 풀이###
 n = int(input())
 
 for _ in range(n):
+    parenthesis=0
     stack = []
     a = input()
     for j in a:
@@ -48,10 +51,11 @@ for _ in range(n):
             if '(' in stack: #스택안에 괄호가 있으면, 가장 최근 것 뽑는 메소드 pop()활용.
                 stack.pop()
             else: #스택에 괄호가 없을 경우
-                print('NO')
+                parenthesis=1
                 break
-    else: #break로 끊기지 않았다면 계속 수행한다.
-        if not stack: #존재여부는 len()==0이 아니라, if와 If not 연산자로 처리한다.
-            print('YES')
-        else:
-            print('NO')
+    if (len(stack)==0) and (parenthesis == 0): #존재여부는 len()==0으로 확인.
+        print('YES')
+    else: #전부 pop되지 않았거나, stack안에 (가 없으면
+        print('NO')
+
+
