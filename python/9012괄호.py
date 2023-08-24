@@ -45,7 +45,7 @@ for _ in range(n):
         if j == '(':
             stack.append(j)
         elif j==')':
-            if stack: #스택에 괄호가 있으면, 가장 최근 것 뽑는 메소드 pop()활용.
+            if '(' in stack: #스택안에 괄호가 있으면, 가장 최근 것 뽑는 메소드 pop()활용.
                 stack.pop()
             else: #스택에 괄호가 없을 경우
                 print('NO')
