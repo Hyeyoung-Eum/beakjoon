@@ -2,25 +2,26 @@ import sys
 def input()->str:
     return sys.stdin.readline().rstrip()
 
-#이진탐색
+#이진탐색(이분탐색))
 def binary_search(a_list, x):# a는 랜선 리스트, x는 입력한 n
     start=1 #가장 짧은 길이
     end=a_list[-1] #가장 긴 길이
 
     while(start<=end):
-        # print('현재 start=',start,'현재 end=', end)
+        print('현재 start=',start,'현재 end=', end)
         mid=(start+end)//2 #결국 최종적으로 mid가 문제에서 찾고자 하는 정답이 될 것임
         result=0
-        # print('현재 mid=',mid)
+        print('현재 mid=',mid)
         for line in a_list:
             result+= line // mid
-        # print('현재 result=',result)
-        if result == x:
-            return mid
+        print('현재 result=',result)
+        if result >= x:
+            start = mid+1
         elif result < x : #개수가 x보다 적으면,개수를 늘릴 수 있도록 해야하니까 정답인 mid를 더 작게 바꿔야한다.
             end = mid -1
-        else: #result > x: #개수가 x보다 많으면, 개수를 줄일 수 있도록 정답인 mid를 키운다.
-            start= mid+1
+        # else: #result > x: #개수가 x보다 많으면, 개수를 줄일 수 있도록 정답인 mid를 키운다.
+        #     start= mid+1
+    return end
 
 k, n = map(int, input().split())
 #k개의 랜선을 n개로 모두 같은 길이로 만드세요
