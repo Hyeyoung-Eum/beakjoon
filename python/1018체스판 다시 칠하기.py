@@ -1,62 +1,30 @@
-N,M=map(int, input().split())
-matrix=[]
-for _ in range(N):
-    matrix.append(list(input()))
+import sys
+input=sys.stdin.readline
 
-# num=(M-8)*(N-8)
+N, M=map(int, input().split()) #N이 행, M이 열
+board=[list(input()) for _ in range(N)]
 
-# #인식할 수 있어야 함.
-
-# num_list=[]
-# for i in range(num):
-#     for j in range(i+8): #시작점 지정
-#         semi_matrix=matrix[j:j+8]
-#     #시작점 옮겨가면서 8번만 계산해주면 됨.
-#     num_list.append()
-#     #그리고 최솟값 출력하면 됨
-
-#종이에다가 그려보면서 풀어보기
-
-#230723 새로운 풀이법 생각남
+#경우에 따라 색을 다시 칠한 횟수를 담는 리스트 만들어놓고, min() 출력하기.
+rewrite_nums=list()
 
 
-
-def wb_change(num):
-    if num=='W':
-        return 'B'
-    else: #num=='B'
-        return 'W'
-
-start_point=list(matrix[0][0])[0]
-cnt=0
-
-print('start_point는', start_point)
-#1)각 row들의 시작점을 먼저 결정해준다.
-for i in range(0, N, 2):
-    if start_point != matrix[i][0]:
-        cnt+=1
-        print(i,'번째 row[0] 변경', sep='')
-        matrix[i][0] = start_point
-
-    #index 초과 오류 해결코드
-    index=i+1
-    if index > N:
-        index=i-2
-        
-    if start_point == matrix[index][0]:
-        cnt+=1
-        print(i+1,'번째 row[0] 변경', sep='')
-        matrix[i+1][0] = wb_change(start_point)
-#2)시작점을 기준으로 계산해준다.
-for row in matrix:
-    for i in range(M-1):
-        if row[i] == row[i+1]:
-            cnt+=1
-            row[i+1]=wb_change(row[i+1])
-
-#3) 결과 출력
-for row in matrix:
-    print(*row, sep='')
-print(cnt)
-#스타트 포인트에 따라서, 짝수행은 모두 같아야한다.
-#for row in matrix[0:N:2]:
+#8*8로 잘라서, 색을 최대한 적게 칠해도 되는 것 출력.
+#시작점 잡아야 함.
+for a in range(N-7):#+1은 인덱스 특성상, 1개를 덜 세기 때문에
+    for b in range(M-7):
+        idx1=0 #시작점B
+        idx2=0 #시작점W
+        for i in range(a, a+8):
+            for j in range(b, b+8):
+                if (i+j) % 2 ==0: #i+j가 짝수면 시작점과 색이 같아야함
+                    if board[i][j] != 'W':
+                        idx1+=1
+                    if board[i][j] != 'B':
+                        idx2+=1
+                else: #i+j가 홀수면
+                    if board[i][j] != 'B':
+                        idx1+=1
+                    if board[i][j] !='W':
+                        idx2+=1
+        rewrite_nums.append(min(idx1, idx2))
+print(min(rewrite_nums))
