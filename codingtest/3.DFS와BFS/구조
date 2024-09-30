@@ -1,0 +1,24 @@
+1.구조 기본 개념
+overflow : 저장공간이 가득 찼을 때 삽입 연산이 일어나는 경우
+underflow : 저장공간이 비었을 때 삭제 연산이 일어나는 경우
+
+2.stack
+-Last In First Out : LIFO, 후입선출
+-파이썬에서는 리스트, append(), pop() 연산을 사용하면 stack 과 동일하게 동작한다.
+
+3.queue
+-First In First Out : FIFO, 선입선출
+-파이썬에서는 deque의 append() 및 popleft()를 통해 구현 가능.
+    -deque는 type이 deque이므로, 리스트 형태로 이용/출력하고 싶으면 list(queue)를 해줘야함.
+
+from collections import deque
+
+queue = deque()
+
+queue.append(3) #3삽입
+queue.append(5) #3삽입
+queue.popleft() #3뽑힘
+
+4.재귀함수
+-연속해서 호출되는 함수는 메인 메모리의 스택 공간에 적재되므로, 재귀 함수는 컴퓨터구조를 생각하지 않고 보면 스택 자료구조와 같다.
+    -따라서 스택 자료구조를 활용해야하는 상당수 알고리즘은 재귀 함수를 이용해서 간편하게 구현될 수 있다.
