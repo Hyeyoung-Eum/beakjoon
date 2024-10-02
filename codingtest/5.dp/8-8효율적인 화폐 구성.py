@@ -26,7 +26,7 @@ d = [10001] * (m+1)
 d[0]=0
 for i in range(n): #i는 현재 선택된 화폐의 인덱스를 의미하고(n이 화폐의 개수이므로)
     for j in range(array[i], m+1): #array[i]는 현재 선택한 화폐의 금액부터, 목표금액 m까지를 의미
-        if d[j - array[i]] != 10001: #j는 확인하고 있는 금액, array[i]는 확인하고 있는 화폐 금액
+        if d[j - array[i]] != 10001: #j는 확인하고 있는 금액, array[i]는 확인하고 있는 화폐 금액. i-k원을 만드는 방법이 존재하는 경우
             d[j] = min(d[j], d[j - array[i]]+1) 
 
 #계산된 결과 출력
