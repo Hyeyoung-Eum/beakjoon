@@ -15,9 +15,7 @@
 n,m = map(int, input().split())
 
 #n개의 화폐 정보 입력받기
-array=[]
-for i in range(n):
-    array.append(int(input()))
+array = [int(input()) for _ in range(n)]
 
 #한 번에 계산된 결과를 저장하기 위한 DP테이블 초기화
 d = [10001] * (m+1)

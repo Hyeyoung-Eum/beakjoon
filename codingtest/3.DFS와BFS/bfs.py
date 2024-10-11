@@ -2,20 +2,20 @@ from collections import deque
 
 def bfs(graph, start, visited):
     #start를 queue에 넣고 방문 처리
-    queue = deque([start])
+    q = deque([start])
     visited[start] = True
 
     #큐가 빌 때까지 반복
-    while queue:
+    while q:
         
         #가장 먼저 들어간 것 꺼내서 출력
-        v = queue.popleft()
+        v = q.popleft()
         print(v, end=' ')
         for i in graph[v]:
 
             #아직 방문 안한 것 큐에 넣고 방문처리
             if not visited[i]:
-                queue.append(i)
+                q.append(i)
                 visited[i]=True
 
 #각 노드가 연결된 정보를 리스트 자료형으로 표현(2차원 리스트)
