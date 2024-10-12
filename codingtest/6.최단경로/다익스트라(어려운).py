@@ -8,9 +8,7 @@ start=int(input())
 
 #1.노드연결 정보그래프
 graph = [ [] for i in range(n+1)]
-#2.방문여부리스트X
-
-#3.최단거리테이블
+#2.최단거리테이블
 distance = [INF] * (n+1)
 
 for _ in range(m):
@@ -23,11 +21,13 @@ def dijkstra(start):
     #시작 노드로 가기 위한 최단 거리는 0으로 설정하며, 큐에 삽입
     heapq.heappush( q, (0, start) )
     distance[start] = 0
+
     while q : #큐가 비어있지 않다면
         #가장 최단 거리가 짧은 노드에 대한 정보 꺼내기
         dist, now = heapq.heappop(q)
 
-        #현재 노드가 이미 처리된 적 있으면 무시(작은 값 가진다는 것이 결국 처리된 적 있다는 뜻. 처리 안됐으면 INF일 것이기 때문에 무조건 클 수 밖에 없다. )
+        #현재 노드가 이미 처리된 적 있으면 무시(작은 값 가진다는 것이 결국 처리된 적 있다는 뜻.
+        #처리 안됐으면 INF일 것이기 때문에 무조건 클 수 밖에 없다. )
         if distance[now] < dist:
             continue
 
@@ -37,7 +37,7 @@ def dijkstra(start):
             cost = dist + i[1]
             if cost < distance[i[0]]:
                 distance[i[0]] = cost
-                heapq.heappush(q, (cost, i[0]))
+                heapq.heappush(q, i[0])
 
 dijkstra(start)
 
