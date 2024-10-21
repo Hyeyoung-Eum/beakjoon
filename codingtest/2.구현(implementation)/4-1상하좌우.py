@@ -1,6 +1,6 @@
 n=int(input())
 x,y=1,1
-plans=input.split()
+plans=input().split()
 
 #L, R, U, D에 따른 방향
 dx = [0, 0,-1,1]
